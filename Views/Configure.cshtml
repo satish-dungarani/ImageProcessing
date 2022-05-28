@@ -1,0 +1,63 @@
+﻿@inject Nop.Core.Domain.Common.AdminAreaSettings adminAreaSettings
+@using Nop.Plugin.Misc.ImageProcessing.Models
+@model ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="ImageProcessing" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            @if (Model != null)
+            {
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <nop-label asp-for="IPQuality" />
+                        </div>
+                        <div class="col-sm-3">
+                            <nop-select asp-for="IPQuality" asp-items="Model.AvailableQualities" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <span asp-validation-for="IPQuality"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</form>
+
+<form asp-controller="ImageProcessing" asp-action="Mutation" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            @if (Model != null)
+            {
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <div class="label-wrapper">
+                                <label class="control-label">
+                                    @T("Plugins.Misc.ImageProcessing.IPMutate")
+                                </label>
+                                <div class="ico-help" title="@T("Plugins.Misc.ImageProcessing.IPMutate.Hint")" data-toggle="tooltip">
+                                    <i class="fa fa-question-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="submit" name="Apply" class="btn bg-blue" value="@T("Plugins.Misc.ImageProcessing.Apply")" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</form>

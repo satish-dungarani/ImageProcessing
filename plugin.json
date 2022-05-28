@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Image Processing",
+  "SystemName": "Misc.ImageProcessing",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "Xcellence-IT",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.ImageProcessing.dll",
+  "Description": "Image Conversion & Compression"
+}
